@@ -14,6 +14,6 @@ jobs:
             await github.rest.actions.createWorkflowDispatch({
               owner: 'ubercj',
               repo: 'ci-practice',
-              workflow_id: 'get-dispatch.yml',
+              workflow_id: 'get_dispatch.yml',
               ref: 'main'
             })
