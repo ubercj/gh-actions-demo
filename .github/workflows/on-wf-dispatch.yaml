@@ -1,0 +1,12 @@
+name: Action that only runs manually
+
+on:
+  pull-request:
+
+jobs:
+  log-message:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Log message to console
+        run: echo 'This action was triggered manually'
+        shell: bash

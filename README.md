@@ -1,0 +1,1 @@
+Simply trying out different applications of GitHub Actions

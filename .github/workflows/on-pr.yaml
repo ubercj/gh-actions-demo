@@ -1,0 +1,12 @@
+name: Action that runs upon PR
+
+on:
+  pull-request:
+
+jobs:
+  log-message:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Log message to console
+        run: echo 'A pull request has been made'
+        shell: bash
