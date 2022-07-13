@@ -1,7 +1,7 @@
 name: Action that only runs manually
 
 on:
-  pull_request:
+  workflow_dispatch:
 
 jobs:
   log-message:
