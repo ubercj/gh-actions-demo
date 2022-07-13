@@ -8,5 +8,5 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Log message to console
-        run: echo 'A pull request has been made and it should fail' && exit 1
+        run: echo 'A pull request has been made and it should NOT fail' && exit 0
         shell: bash
