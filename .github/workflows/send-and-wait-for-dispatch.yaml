@@ -1,7 +1,8 @@
 name: Send dispatch to outside repo and wait for result
 
 on:
-  workflow_dispatch:
+  pull_request:
+    branches: [main]
 
 jobs:
   send-dispatch:
@@ -12,9 +13,11 @@ jobs:
         with:
           github-token: ${{ secrets.PAT_TOKEN }}
           script: |
-            await github.rest.actions.createWorkflowDispatch({
+            await github.rest.repos.createDispatchEvent({
               owner: 'ubercj',
               repo: 'ci-practice',
-              workflow_id: 'get_dispatch.yml',
-              ref: 'main'
+              event_type: 'sample-dispatch',
+              client_payload: {
+                PR_SHA: "${{ github.event.pull_request.head.sha }}"
+              }
             })
