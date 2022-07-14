@@ -12,10 +12,19 @@ jobs:
         uses: actions/github-script@v6
         with:
           github-token: ${{ secrets.PAT_TOKEN }}
+          # script: |
+          #   await github.rest.actions.createWorkflowDispatch({
+          #     owner: 'ubercj',
+          #     repo: 'ci-practice',
+          #     workflow_id: 'get_dispatch.yml',
+          #     ref: 'main'
+          #   })
           script: |
-            await github.rest.actions.createWorkflowDispatch({
+            await github.rest.repos.createDispatchEvent({
               owner: 'ubercj',
               repo: 'ci-practice',
-              workflow_id: 'get_dispatch.yml',
-              ref: 'main'
+              event_type: 'sample-dispatch',
+              client_payload: {
+                PR_SHA: ${{ github.SHA }}
+              }
             })
