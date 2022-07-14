@@ -1,7 +1,8 @@
 name: Send dispatch to outside repo and wait for result
 
 on:
-  workflow_dispatch:
+  pull_request:
+    branches: [main]
 
 jobs:
   send-dispatch:
