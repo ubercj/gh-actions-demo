@@ -9,7 +9,7 @@ jobs:
     if: ${{ github.event.client_payload }} === 'success'
     runs-on: ubuntu-latest
     steps:
-      -name: On run success
+      - name: On run success
         run: |
           echo "Result was ${{ github.event.client_payload }}"
           exit 0
