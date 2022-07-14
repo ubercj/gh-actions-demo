@@ -6,21 +6,21 @@ on:
 
 jobs:
   run_result_passes:
-    if: ${{ github.event.client_payload }} === 'success'
+    if: ${{ github.event.client_payload.run_result }} === 'success'
     runs-on: ubuntu-latest
     steps:
       - name: On run success
         run: |
-          echo "Result was ${{ github.event.client_payload }}"
+          echo "Result was ${{ github.event.client_payload.run_result }}"
           exit 0
         shell: bash
 
   run_result_fails:
-    if: ${{ github.event.client_payload }} === 'failure'
+    if: ${{ github.event.client_payload.run_result }} === 'failure'
     runs-on: ubuntu-latest
     steps:
       - name: On run failure
         run: |
-          echo "Result was ${{ github.event.client_payload }}"
+          echo "Result was ${{ github.event.client_payload.run_result }}"
           exit 1
         shell: bash
