@@ -25,6 +25,6 @@ jobs:
               repo: 'ci-practice',
               event_type: 'sample-dispatch',
               client_payload: {
-                PR_SHA: "${{ github.SHA }}"
+                PR_SHA: "${{ github.event.pull_request.head.sha }}"
               }
             })
