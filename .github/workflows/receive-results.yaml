@@ -1,0 +1,22 @@
+name: Check status of CI runs
+
+on:
+  repository_dispatch:
+    types: [ci_test_run]
+
+jobs:
+  run_result_passes:
+    if: ${{ github.event.client_payload }} === 'success'
+    runs-on: ubuntu-latest
+    steps:
+      run: |
+        echo "Result was ${{ github.event.client_payload }}"
+        exit 0
+
+  run_result_fails:
+    if: ${{ github.event.client_payload }} === 'failure'
+    runs-on: ubuntu-latest
+    steps:
+      run: |
+        echo "Result was ${{ github.event.client_payload }}"
+        exit 1

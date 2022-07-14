@@ -11,11 +11,9 @@ jobs:
         with:
           github-token: ${{ secrets.PAT_TOKEN }}
           script: |
-            const result = await github.rest.actions.createWorkflowDispatch({
+            await github.rest.actions.createWorkflowDispatch({
               owner: 'ubercj',
               repo: 'ci-practice',
               workflow_id: 'get_dispatch.yml',
               ref: 'main'
             })
-
-            console.log(result)
